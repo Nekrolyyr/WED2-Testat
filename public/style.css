@@ -1,18 +1,235 @@
-/* Error: Top-level selectors may not contain the parent selector "&".
- *    ,
- * 25 |     .theme-#{$themeName} & {
- *    |     ^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   public/colors.scss 25:5  themeGen()
- *   public/style.scss 4:1    root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: Top-level selectors may not contain the parent selector "&".\a    \2577 \a 25 \2502      .theme-#{$themeName} & {\a    \2502      ^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   public/colors.scss 25:5  themeGen()\a   public/style.scss 4:1    root stylesheet';
+body {
+  margin: 0;
 }
+@media screen and (min-width: 770px) {
+  body {
+    margin: 0 10%;
+  }
+}
+
+p {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 0.85em;
+}
+
+ol {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+a {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+}
+
+b {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+}
+
+.nav-bar {
+  background-color: #3f5ff0;
+  position: relative;
+  height: 60px;
+  border-bottom: 10px solid #2f4f9f;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  color: #f0f3ff;
+}
+
+.option-bar {
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 770px) {
+  .option-bar {
+    flex-direction: column;
+  }
+}
+
+.sort-button {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  padding: 10px 45px 10px 30px;
+  color: #30303f;
+  margin-top: 10px;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: #f0f3ff;
+  background-image: url("/images/sort-up-and-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 15px;
+  border-radius: 6px;
+  border-color: #30303f;
+  border-width: 1px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: absolute;
+  width: 60px;
+  height: 34px;
+  right: 0;
+  bottom: 0;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: -10px;
+  left: -20px;
+  right: 10px;
+  bottom: 10px;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #e0306f;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #e0306f;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch-holder {
+  position: absolute;
+  height: 60px;
+  left: 10px;
+  bottom: 10px;
+  background-color: #f0f3ff;
+  border-radius: 6px;
+  padding: 10px;
+  margin-left: 10%;
+}
+@media screen and (max-width: 770px) {
+  .switch-holder {
+    margin-left: 0;
+  }
+}
+
+.task-container {
+  margin: 12px;
+  background-color: #f0f3ff;
+  border-radius: 12px;
+  border-color: #30303f;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.decoration-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.priority-holder {
+  bottom: 10px;
+  right: 10px;
+  width: fit-content;
+  margin: 10px;
+}
+
+.due-date {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 0.85em;
+  bottom: 20px;
+  right: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.task-title {
+  margin: 1em;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 1.2em;
+  width: 4em;
+  flex-grow: 1;
+  align-self: center;
+}
+
+.task-content {
+  margin: 1em;
+  min-height: 4em;
+  flex-grow: 3;
+  flex-basis: 30em;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 0.85em;
+}
+
+textarea {
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #f0f3ff;
+}
+
+.check-image {
+  margin: 10px;
+}
+
+.edit-button {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 0.85em;
+  background-color: #e0306f;
+  color: #f0f3ff;
+  border-color: transparent;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 8px 16px 8px 16px;
+  vertical-align: bottom;
+}
+
+.end-block {
+  flex-direction: row;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,32 +1,33 @@
 @import 'colors';
 @import 'values';
-
-.floating-action-button{
-    height: 48px;
-    border-radius: 6px;
-    background-color: $colorAccent;
-    padding: 0 10px;
-    outline: none;
-    border: none;
-    font-family: $defaultFont;
-    color: $titaniumWhite;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    margin-right: 10%;
-    @media screen and (max-width: $screensizeThreshhold){
-        border-radius: 24px;
-        color: transparent;
-        width: 48px;
-        margin-right: 0;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 60%;
-        background-image: url('/images/plus.svg');
-    }
-    @media (hover){
-      &:hover:not(.active) {
-        opacity: 0.8;
-      }
+@include themeGen() {
+    .floating-action-button {
+        height: 48px;
+        border-radius: 6px;
+        background-color: getThemeVal('accent');
+        padding: 0 10px;
+        outline: none;
+        border: none;
+        font-family: $defaultFont;
+        color: getThemeVal('titanium');
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        margin-right: 10%;
+        @media screen and (max-width: $screensizeThreshold) {
+            border-radius: 24px;
+            color: transparent;
+            width: 48px;
+            margin-right: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 60%;
+            background-image: url('/images/plus.svg');
+        }
+        @media (hover) {
+            &:hover:not(.active) {
+                opacity: 0.8;
+            }
+        }
     }
 }

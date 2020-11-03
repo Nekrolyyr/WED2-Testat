@@ -1,18 +1,33 @@
-/* Error: Top-level selectors may not contain the parent selector "&".
- *    ,
- * 25 |     .theme-#{$themeName} & {
- *    |     ^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   public/colors.scss 25:5  themeGen()
- *   public/buttons.scss 3:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: Top-level selectors may not contain the parent selector "&".\a    \2577 \a 25 \2502      .theme-#{$themeName} & {\a    \2502      ^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   public/colors.scss 25:5  themeGen()\a   public/buttons.scss 3:1  root stylesheet';
+.floating-action-button {
+  height: 48px;
+  border-radius: 6px;
+  background-color: #e0306f;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  color: #f0f3ff;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  margin-right: 10%;
 }
+@media screen and (max-width: 770px) {
+  .floating-action-button {
+    border-radius: 24px;
+    color: transparent;
+    width: 48px;
+    margin-right: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-image: url("/images/plus.svg");
+  }
+}
+@media (hover) {
+  .floating-action-button:hover:not(.active) {
+    opacity: 0.8;
+  }
+}
+
+/*# sourceMappingURL=buttons.css.map */
