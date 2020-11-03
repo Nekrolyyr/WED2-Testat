@@ -1,0 +1,43 @@
+
+<div class="nav-bar">
+    <h2>Notice Application</h2>
+</div>
+<div class="option-bar">
+    <button class="sort-button">Finish Date</button>
+    <button class="sort-button">Created Date</button>
+    <button class="sort-button">Importance</button>
+</div>
+
+<ol>
+    {{#each tasks}}
+    <li>
+        <div class="task-container">
+            <div class="text-container">
+                <h3 class="task-title">{{this.title}}</h3>
+                <textarea class="task-content">{{this.content}}</textarea>
+            </div>
+            <div class="decoration-container">
+                <div class="priority-holder">
+                    {{#times this.priority}}
+                        <img src="images/flag.svg" alt="Priority" width="30" height="30">
+                    {{/times}}
+                </div>
+                <div class="due-date">Due: {{this.dueText}}</div>
+                <div class="end-block">
+                    <button class="edit-button">Edit</button>
+                    <img style="visibility: {{#if this.done}} visible {{else}} hidden{{/if}}" class="check-image" src="images/tick.svg" alt="Done!" width="30" height="30">
+                </div>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</ol>
+
+<button class="floating-action-button">Add Note</button>
+<div class="switch-holder">
+    <a>Show done</a>
+    <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+    </label>
+</div>
