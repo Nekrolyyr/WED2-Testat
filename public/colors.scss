@@ -1,45 +1,5 @@
-
-$themes: (
-        'light': (
-                'primary': #3f5ff0,
-                'primaryDark':#2f4f9f,
-                'accent': #e0306f,
-                'titanium': #f0f3ff,
-                'material': #30303f
-        ),
-        'dark': (
-                'primary': #3f5ff0,
-                'primaryDark':#2f4f9f,
-                'accent': #f5b4cd,
-                'titanium': #30303f,
-                'material': #f0f3ff
-        )
-);
-/**
-* Mixin to use to generate blocks for each theme
-* Automatically takes @content
-*/
-$scopedTheme: null;
-@mixin themeGen($allThemesMap: $themes) {
-  @each $themeName, $themeMap in $allThemesMap {
-    .theme-#{$themeName} & {
-      // Creating a map that contains values specific to theme.
-      // Global is necessary since in mixin
-      $scopedTheme: () !global;
-      @each $variableName, $variableValue in $themeMap {
-        // Merge each key-value pair into the theme specific map
-        $scopedTheme: map-merge($scopedTheme, ($variableName: $variableValue)) !global;
-      }
-      // The original content passed
-      @content;
-      // Unset
-      $scopedTheme: null !global;
-    }
-  }
-}
-/**
-* Function to call within themeGen mixin, to get value from the current theme in the iterator
-*/
-@function getThemeVal($themeVar){
-  @return map-get($scopedTheme,$themeVar);
-}
+$colorPrimary: #3f5ff0;
+$colorPrimaryDark: #2f4f9f;
+$colorAccent: #e0306f;
+$titaniumWhite: #f0f3ff;
+$materialBlack: #30303f;
