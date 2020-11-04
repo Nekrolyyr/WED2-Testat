@@ -1,3 +1,10 @@
+/**
+* Mixin to use to generate blocks for each theme
+* Automatically takes @content
+*/
+/**
+* Function to call within themeGen mixin, to get value from the current theme in the iterator
+*/
 body {
   margin: 0;
 }
@@ -5,6 +12,18 @@ body {
   body {
     margin: 0 10%;
   }
+}
+
+.theme-light {
+  background-color: #fafaff;
+}
+
+.theme-dark {
+  background-color: #40404f;
+}
+
+.background {
+  margin: 0;
 }
 
 p {
@@ -17,15 +36,26 @@ ol {
   padding-inline-start: 0;
 }
 
-a {
+.theme-light a {
   font-family: "Ubuntu", "Arial", "Helvetica";
+  color: #30303f;
+}
+.theme-dark a {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  color: #f0f3ff;
 }
 
 b {
   font-family: "Ubuntu", "Arial", "Helvetica";
 }
 
-.nav-bar {
+.theme-light .nav-bar {
+  background-color: #3f5ff0;
+  position: relative;
+  height: 60px;
+  border-bottom: 10px solid #2f4f9f;
+}
+.theme-dark .nav-bar {
   background-color: #3f5ff0;
   position: relative;
   height: 60px;
@@ -54,7 +84,7 @@ h2 {
   }
 }
 
-.sort-button {
+.theme-light .sort-button {
   font-family: "Ubuntu", "Arial", "Helvetica";
   padding: 10px 45px 10px 30px;
   color: #30303f;
@@ -68,6 +98,22 @@ h2 {
   background-size: 15px;
   border-radius: 6px;
   border-color: #30303f;
+  border-width: 1px;
+}
+.theme-dark .sort-button {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  padding: 10px 45px 10px 30px;
+  color: #f0f3ff;
+  margin-top: 10px;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: #30303f;
+  background-image: url("/images/sort-up-and-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 15px;
+  border-radius: 6px;
+  border-color: #f0f3ff;
   border-width: 1px;
 }
 
@@ -92,7 +138,7 @@ h2 {
   position: absolute;
   cursor: pointer;
   top: -10px;
-  left: -20px;
+  left: -30px;
   right: 10px;
   bottom: 10px;
   background-color: #ccc;
@@ -112,18 +158,24 @@ h2 {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+.theme-light input:checked + .slider {
   background-color: #e0306f;
 }
+.theme-dark input:checked + .slider {
+  background-color: #f5b4cd;
+}
 
-input:focus + .slider {
+.theme-light input:focus + .slider {
   box-shadow: 0 0 1px #e0306f;
+}
+.theme-dark input:focus + .slider {
+  box-shadow: 0 0 1px #f5b4cd;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(36px);
-  -ms-transform: translateX(36px);
-  transform: translateX(36px);
+  -webkit-transform: translateX(46px);
+  -ms-transform: translateX(46px);
+  transform: translateX(46px);
 }
 
 /* Rounded sliders */
@@ -135,7 +187,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.switch-holder {
+.theme-light .switch-holder {
   position: absolute;
   height: 60px;
   left: 10px;
@@ -146,16 +198,37 @@ input:checked + .slider:before {
   margin-left: 10%;
 }
 @media screen and (max-width: 770px) {
-  .switch-holder {
+  .theme-light .switch-holder {
+    margin-left: 0;
+  }
+}
+.theme-dark .switch-holder {
+  position: absolute;
+  height: 60px;
+  left: 10px;
+  bottom: 10px;
+  background-color: #30303f;
+  border-radius: 6px;
+  padding: 10px;
+  margin-left: 10%;
+}
+@media screen and (max-width: 770px) {
+  .theme-dark .switch-holder {
     margin-left: 0;
   }
 }
 
-.task-container {
+.theme-light .task-container {
   margin: 12px;
   background-color: #f0f3ff;
   border-radius: 12px;
   border-color: #30303f;
+}
+.theme-dark .task-container {
+  margin: 12px;
+  background-color: #30303f;
+  border-radius: 12px;
+  border-color: #f0f3ff;
 }
 
 .text-container {
@@ -179,22 +252,42 @@ input:checked + .slider:before {
   margin: 10px;
 }
 
-.due-date {
+.theme-light .due-date {
   font-family: "Ubuntu", "Arial", "Helvetica";
   font-size: 0.85em;
   bottom: 20px;
   right: 10px;
   margin: 10px;
   text-align: center;
+  color: #30303f;
+}
+.theme-dark .due-date {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 0.85em;
+  bottom: 20px;
+  right: 10px;
+  margin: 10px;
+  text-align: center;
+  color: #f0f3ff;
 }
 
-.task-title {
+.theme-light .task-title {
   margin: 1em;
   font-family: "Ubuntu", "Arial", "Helvetica";
   font-size: 1.2em;
   width: 4em;
   flex-grow: 1;
   align-self: center;
+  color: #30303f;
+}
+.theme-dark .task-title {
+  margin: 1em;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 1.2em;
+  width: 4em;
+  flex-grow: 1;
+  align-self: center;
+  color: #f0f3ff;
 }
 
 .task-content {
@@ -206,21 +299,39 @@ input:checked + .slider:before {
   font-size: 0.85em;
 }
 
-textarea {
+.theme-light textarea {
   border-radius: 6px;
   padding: 6px;
   background-color: #f0f3ff;
+  color: #30303f;
+}
+.theme-dark textarea {
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #30303f;
+  color: #f0f3ff;
 }
 
 .check-image {
   margin: 10px;
 }
 
-.edit-button {
+.theme-light .edit-button {
   font-family: "Ubuntu", "Arial", "Helvetica";
   font-size: 0.85em;
   background-color: #e0306f;
   color: #f0f3ff;
+  border-color: transparent;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 8px 16px 8px 16px;
+  vertical-align: bottom;
+}
+.theme-dark .edit-button {
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 0.85em;
+  background-color: #f5b4cd;
+  color: #30303f;
   border-color: transparent;
   border-radius: 6px;
   margin: 10px;

@@ -1,7 +1,7 @@
 @import 'colors';
 @import 'values';
-@include themeGen() {
     .floating-action-button {
+        @include themeGen() {
         height: 48px;
         border-radius: 6px;
         background-color: getThemeVal('accent');
@@ -24,6 +24,26 @@
             background-size: 60%;
             background-image: url('/images/plus.svg');
         }
+        @media (hover) {
+            &:hover:not(.active) {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+.theme-button{
+    @include themeGen() {
+        height: 38px;
+        border-radius: 6px;
+        background-color: getThemeVal('accent');
+        padding: 0 10px;
+        outline: none;
+        border: none;
+        font-family: $defaultFont;
+        color: getThemeVal('titanium');
+        position: absolute;
+        right: 10px;
+        top: 10px;
         @media (hover) {
             &:hover:not(.active) {
                 opacity: 0.8;

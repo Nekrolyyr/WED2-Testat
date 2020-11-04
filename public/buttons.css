@@ -1,4 +1,11 @@
-.floating-action-button {
+/**
+* Mixin to use to generate blocks for each theme
+* Automatically takes @content
+*/
+/**
+* Function to call within themeGen mixin, to get value from the current theme in the iterator
+*/
+.theme-light .floating-action-button {
   height: 48px;
   border-radius: 6px;
   background-color: #e0306f;
@@ -13,7 +20,7 @@
   margin-right: 10%;
 }
 @media screen and (max-width: 770px) {
-  .floating-action-button {
+  .theme-light .floating-action-button {
     border-radius: 24px;
     color: transparent;
     width: 48px;
@@ -25,7 +32,75 @@
   }
 }
 @media (hover) {
-  .floating-action-button:hover:not(.active) {
+  .theme-light .floating-action-button:hover:not(.active) {
+    opacity: 0.8;
+  }
+}
+.theme-dark .floating-action-button {
+  height: 48px;
+  border-radius: 6px;
+  background-color: #f5b4cd;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  color: #30303f;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  margin-right: 10%;
+}
+@media screen and (max-width: 770px) {
+  .theme-dark .floating-action-button {
+    border-radius: 24px;
+    color: transparent;
+    width: 48px;
+    margin-right: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-image: url("/images/plus.svg");
+  }
+}
+@media (hover) {
+  .theme-dark .floating-action-button:hover:not(.active) {
+    opacity: 0.8;
+  }
+}
+
+.theme-light .theme-button {
+  height: 38px;
+  border-radius: 6px;
+  background-color: #e0306f;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  color: #f0f3ff;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+@media (hover) {
+  .theme-light .theme-button:hover:not(.active) {
+    opacity: 0.8;
+  }
+}
+.theme-dark .theme-button {
+  height: 38px;
+  border-radius: 6px;
+  background-color: #f5b4cd;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  color: #30303f;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+@media (hover) {
+  .theme-dark .theme-button:hover:not(.active) {
     opacity: 0.8;
   }
 }

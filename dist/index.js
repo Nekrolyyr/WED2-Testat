@@ -31,7 +31,7 @@ const tasks = [
     new Task_1.default("Task 2 long title", "Hello World 3", new Date(), new Date(), 1, true),
 ];
 app.get("/", (req, res) => {
-    res.render("index", { tasks });
+    res.render("index", { tasks, theme: "theme-light" });
 });
 app.listen(port, () => {
     console.log("Server Started!");

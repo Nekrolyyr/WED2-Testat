@@ -1,12 +1,22 @@
 @import 'colors';
 @import 'values';
 
-@include themeGen() {
   body {
     margin: 0;
     @media screen and (min-width: $screensizeThreshold) {
       margin: 0 10%;
     }
+  }
+
+  .theme-light {
+    background-color: map-get(map-get($themes,'light'), 'background')
+  }
+  .theme-dark {
+    background-color: map-get(map-get($themes,'dark'), 'background')
+  }
+
+  .background{
+    margin: 0;
   }
 
   p {
@@ -20,7 +30,10 @@
   }
 
   a {
-    font-family: $defaultFont;
+    @include themeGen() {
+      font-family: $defaultFont;
+      color: getThemeVal('material');
+    }
   }
 
   b {
@@ -28,19 +41,21 @@
   }
 
   .nav-bar {
-    background-color: getThemeVal('primary');
-    position: relative;
-    height: 60px;
-    border-bottom: 10px solid getThemeVal('primaryDark');
+    @include themeGen() {
+      background-color: getThemeVal('primary');
+      position: relative;
+      height: 60px;
+      border-bottom: 10px solid getThemeVal('primaryDark');
+    }
   }
 
   h2 {
-    margin: 0;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 60px;
-    font-family: $defaultFont;
-    color: getThemeVal('titanium');
+      margin: 0;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 60px;
+      font-family: $defaultFont;
+      color: map-get(map-get($themes,'light'), 'titanium');
   }
 
   .option-bar {
@@ -55,20 +70,22 @@
   }
 
   .sort-button {
-    font-family: $defaultFont;
-    padding: 10px 45px 10px 30px;
-    color: getThemeVal('material');
-    margin-top: 10px;
-    margin-left: 1em;
-    margin-right: 1em;
-    background-color: getThemeVal('titanium');
-    background-image: url('/images/sort-up-and-down.svg');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 15px;
-    border-radius: 6px;
-    border-color: getThemeVal('material');
-    border-width: 1px;
+    @include themeGen() {
+      font-family: $defaultFont;
+      padding: 10px 45px 10px 30px;
+      color: getThemeVal('material');
+      margin-top: 10px;
+      margin-left: 1em;
+      margin-right: 1em;
+      background-color: getThemeVal('titanium');
+      background-image: url('/images/sort-up-and-down.svg');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 15px;
+      border-radius: 6px;
+      border-color: getThemeVal('material');
+      border-width: 1px;
+    }
   }
 
   /* The switch - the box around the slider */
@@ -92,7 +109,7 @@
     position: absolute;
     cursor: pointer;
     top: -10px;
-    left: -20px;
+    left: -30px;
     right: 10px;
     bottom: 10px;
     background-color: #ccc;
@@ -113,17 +130,21 @@
   }
 
   input:checked + .slider {
-    background-color: getThemeVal('accent');
+    @include themeGen() {
+      background-color: getThemeVal('accent');
+    }
   }
 
   input:focus + .slider {
-    box-shadow: 0 0 1px getThemeVal('accent');
+    @include themeGen() {
+      box-shadow: 0 0 1px getThemeVal('accent');
+    }
   }
 
   input:checked + .slider:before {
-    -webkit-transform: translateX(36px);
-    -ms-transform: translateX(36px);
-    transform: translateX(36px);
+    -webkit-transform: translateX(46px);
+    -ms-transform: translateX(46px);
+    transform: translateX(46px);
   }
 
   /* Rounded sliders */
@@ -135,24 +156,28 @@
     border-radius: 50%;
   }
   .switch-holder {
-    position: absolute;
-    height: 60px;
-    left: 10px;
-    bottom: 10px;
-    background-color: getThemeVal('titanium');
-    border-radius: 6px;
-    padding: 10px;
-    margin-left: 10%;
-    @media screen and (max-width: $screensizeThreshold) {
-      margin-left: 0;
+    @include themeGen() {
+      position: absolute;
+      height: 60px;
+      left: 10px;
+      bottom: 10px;
+      background-color: getThemeVal('titanium');
+      border-radius: 6px;
+      padding: 10px;
+      margin-left: 10%;
+      @media screen and (max-width: $screensizeThreshold) {
+        margin-left: 0;
+      }
     }
   }
 
   .task-container {
-    margin: 12px;
-    background-color: getThemeVal('titanium');
-    border-radius: 12px;
-    border-color: getThemeVal('material');
+    @include themeGen() {
+      margin: 12px;
+      background-color: getThemeVal('titanium');
+      border-radius: 12px;
+      border-color: getThemeVal('material');
+    }
   }
 
   .text-container {
@@ -177,21 +202,27 @@
   }
 
   .due-date {
-    font-family: $defaultFont;
-    font-size: 0.85em;
-    bottom: 20px;
-    right: 10px;
-    margin: 10px;
-    text-align: center;
+    @include themeGen() {
+      font-family: $defaultFont;
+      font-size: 0.85em;
+      bottom: 20px;
+      right: 10px;
+      margin: 10px;
+      text-align: center;
+      color: getThemeVal('material');
+    }
   }
 
   .task-title {
-    margin: 1em;
-    font-family: $defaultFont;
-    font-size: 1.2em;
-    width: 4em;
-    flex-grow: 1;
-    align-self: center;
+    @include themeGen() {
+      margin: 1em;
+      font-family: $defaultFont;
+      font-size: 1.2em;
+      width: 4em;
+      flex-grow: 1;
+      align-self: center;
+      color: getThemeVal('material');
+    }
   }
   .task-content {
     margin: 1em;
@@ -202,25 +233,30 @@
     font-size: 0.85em;
   }
   textarea {
-    border-radius: 6px;
-    padding: 6px;
-    background-color: getThemeVal('titanium');
+    @include themeGen() {
+      border-radius: 6px;
+      padding: 6px;
+      background-color: getThemeVal('titanium');
+      color: getThemeVal('material');
+    }
   }
   .check-image {
     margin: 10px;
   }
   .edit-button {
-    font-family: $defaultFont;
-    font-size: 0.85em;
-    background-color: getThemeVal('accent');
-    color: getThemeVal('titanium');
-    border-color: transparent;
-    border-radius: 6px;
-    margin: 10px;
-    padding: 8px 16px 8px 16px;
-    vertical-align: bottom;
+    @include themeGen() {
+      font-family: $defaultFont;
+      font-size: 0.85em;
+      background-color: getThemeVal('accent');
+      color: getThemeVal('titanium');
+      border-color: transparent;
+      border-radius: 6px;
+      margin: 10px;
+      padding: 8px 16px 8px 16px;
+      vertical-align: bottom;
+    }
   }
   .end-block {
     flex-direction: row;
   }
-}
+

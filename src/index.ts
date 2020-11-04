@@ -30,7 +30,7 @@ const tasks = [
 ]
 
 app.get("/", (req,res) => {
-    res.render("index", {tasks})
+    res.render("index", {tasks, theme: "theme-light"})
 })
 
 app.listen(port, ()=>{
