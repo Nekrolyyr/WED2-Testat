@@ -1,38 +1,41 @@
-import express from 'express'
-import morgan from 'morgan'
-import path from 'path'
-import handlebars from 'express-handlebars'
-import Task from "./Task";
+import express from 'express';
+import bodyParser from "body-parser";
+import morgan from 'morgan';
+import path from 'path';
+import {handlebarsEngine} from "../domain/handlebarBuilder";
+import taskRouter from "../router/taskRouter"
+import {sessionHandler} from "../domain/Session";
+import session from "express-session";
+import override from "method-override";
+
 
 const app = express();
 const port = 8080;
 
 app.use(morgan('combined'))
-app.set("views", path.join(__dirname, "../views"))
-app.set("view engine", "hbs")
+app.set("views", path.join(__dirname, "../../views"))
 app.use(express.static('public'))
-const handlebarsEngine = handlebars({
-    layoutsDir: __dirname + "/../views/layouts",
-    defaultLayout: "main",
-    extname: "hbs",
-    helpers: {times(n: number, block: { fn: (arg0: number) => string; }) {
-            let accum = '';
-            for(let i = 0; i < n; ++i)
-                accum += block.fn(i);
-            return accum;
-        }}
-})
-app.engine("hbs", handlebarsEngine)
+app.engine("hbs", handlebarsEngine.engine)
+app.set("view engine", "hbs")
 
-const tasks = [
-    new Task("Task 1", "Hello World Lorem Ipsum dolores isa novum terestane go los bartena salva ...... ...... ----- ---- Go", new Date(), new Date(), 3, false),
-    new Task("Task 2 long title", "Hello World 3", new Date(), new Date(), 1, true),
-]
-
-app.get("/", (req,res) => {
-    res.render("index", {tasks, theme: "theme-light"})
-})
-
+app.use(
+    session({
+        secret: "099093288389249824879283",
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+app.use(sessionHandler)
+app.use(taskRouter)
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(override((req: { body: { _method: any; }; }, res: any) =>{
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        const method = req.body._method;
+        delete req.body._method;
+        return method;
+    }
+}));
 app.listen(port, ()=>{
     console.log("Server Started!")
 })

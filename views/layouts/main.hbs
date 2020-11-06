@@ -8,10 +8,12 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <link rel="stylesheet" type="text/css" href="./buttons.css" />
   </head>
-  <body class="{{theme}}">
+  <body class="{{#bool_check theme}}theme-dark{{else}}theme-light{{/bool_check}}">
   <div class="nav-bar">
       <h2>Notice Application</h2>
-      <button class="theme-button">Switch Theme</button>
+      <form action="/" method="get">
+        <button class="theme-button" value="{{#bool_check theme}}false{{else}}true{{/bool_check}}" name="theme" type="submit">Switch Theme</button>
+      </form>
   </div>
 {{{body}}}
   </body>

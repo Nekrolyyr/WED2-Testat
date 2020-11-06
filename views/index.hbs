@@ -1,8 +1,25 @@
-
-<div class="option-bar">
-    <button class="sort-button">Finish Date</button>
-    <button class="sort-button">Created Date</button>
-    <button class="sort-button">Importance</button>
+<div  class="option-bar" >
+<form action="/" method="get">
+    <label class="sort-button">
+        <input type="radio" value={{toggle_direction orderDescending}} id="due" name="orderDescending" onclick="submit()"/>
+        <input type="hidden" value="due" id="due" name="orderBy"/>
+        <label for="due">Finish Date</label>
+    </label>
+</form>
+<form class="option-bar" action="/" method="get">
+    <label class="sort-button">
+        <input type="radio" value={{toggle_direction orderDescending}} id="created" name="orderDescending" onclick="submit()"/>
+        <input type="hidden" value="created" id="created" name="orderBy"/>
+        <label for="created">Created Date</label>
+    </label>
+</form>
+<form class="option-bar" action="/" method="get">
+    <label class="sort-button">
+        <input type="radio" value={{toggle_direction orderDescending}} id="priority" name="orderDescending" onclick="submit()"/>
+        <input type="hidden" value="priority" id="priority" name="orderBy"/>
+        <label for="priority">Importance</label>
+    </label>
+</form>
 </div>
 
 <ol>
