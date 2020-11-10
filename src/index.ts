@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import morgan from 'morgan';
 import path from 'path';
 import {handlebarsEngine} from "../domain/handlebarBuilder";
-import taskRouter from "../router/taskRouter"
+import router from "../router/router"
 import {sessionHandler} from "../domain/Session";
 import session from "express-session";
 import override from "method-override";
@@ -26,7 +26,6 @@ app.use(
     })
 );
 app.use(sessionHandler)
-app.use(taskRouter)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(override((req: { body: { _method: any; }; }, res: any) =>{
@@ -36,6 +35,7 @@ app.use(override((req: { body: { _method: any; }; }, res: any) =>{
         return method;
     }
 }));
+app.use(router)
 app.listen(port, ()=>{
     console.log("Server Started!")
 })

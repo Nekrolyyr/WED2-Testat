@@ -5,7 +5,11 @@ export class TaskController{
     async getIndex(req: any, res: any): Promise<void>{
         const tasks = await taskDatabase.getAllTasks(req.userSettings.orderBy, req.userSettings.orderDescending, req.userSettings.hideDone)
         console.log(`Rendering with Theme: ${ req.userSettings.theme }`)
-        res.render("index", {tasks, theme: req.userSettings.theme , orderDescending: req.userSettings.orderDescending})
+        res.render("index", {tasks, theme: req.userSettings.theme,
+            orderDescending: req.userSettings.orderDescending,
+            orderBy: req.userSettings.orderBy,
+            hideDone: req.userSettings.hideDone
+        })
     }
     async getTask(req: any, res: any){
         let task: Task
@@ -21,15 +25,16 @@ export class TaskController{
         const task = new Task(
             req.body.title,
             req.body.content,
-            req.body.create,
-            req.body.due,
+            new Date(),
+            new Date(req.body.due),
             req.body.priority,
-            req.body.done
+            req.body.done === "on"
         )
         const id = req.params.id;
         if(id == null || id === ""){
             await taskDatabase.addTask(task);
         }else{
+            task.created = req.body.created
             await taskDatabase.updateTask(id, task);
         }
         res.redirect("/");

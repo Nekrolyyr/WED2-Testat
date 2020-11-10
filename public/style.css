@@ -299,6 +299,26 @@ input:checked + .slider:before {
   font-size: 0.85em;
 }
 
+.task-content-small {
+  margin: 1em;
+  flex-grow: 3;
+  flex-basis: 30em;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  font-size: 0.85em;
+}
+.theme-light .task-content-small {
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #f0f3ff;
+  color: #30303f;
+}
+.theme-dark .task-content-small {
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #30303f;
+  color: #f0f3ff;
+}
+
 .theme-light textarea {
   border-radius: 6px;
   padding: 6px;
@@ -341,6 +361,36 @@ input:checked + .slider:before {
 
 .end-block {
   flex-direction: row;
+}
+
+.theme-light .no-tasks {
+  color: #30303f;
+  background-color: #f0f3ff;
+  text-align: center;
+  width: available;
+  padding: 2em;
+  font-size: 1.25em;
+  border-radius: 12px;
+  border-color: #30303f;
+}
+.theme-dark .no-tasks {
+  color: #f0f3ff;
+  background-color: #30303f;
+  text-align: center;
+  width: available;
+  padding: 2em;
+  font-size: 1.25em;
+  border-radius: 12px;
+  border-color: #f0f3ff;
+}
+
+.radio-button {
+  margin-right: 1em;
+  width: 25px;
+  height: 25px;
+  border: 3px solid #808080;
+  border-radius: 10px;
+  transition: 0.25s;
 }
 
 /*# sourceMappingURL=style.css.map */

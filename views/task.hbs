@@ -1,0 +1,43 @@
+<form action="/task/{{task._id}}" method="post">
+    <div class="text-container">
+        <label class="task-title" for="title">Title</label>
+        <input class="task-content-small" type="text" id="title" name="title" value="{{task.title}}" required>
+    </div>
+
+    <div class="text-container">
+        <label class="task-title" for="description">Content</label>
+        <textarea class="task-content" id="description" name="content" rows="10" required>{{task.content}}</textarea>
+    </div>
+
+    <div class="text-container">
+        <label class="task-title">Priority</label>
+        <div class="task-content-small">
+            <label class="task-title" for="_1">1</label>
+            <input class="radio-button" type="radio" id="_1" name="priority" {{checkedIfEqual '1' task.priority}} value="1"  required>
+            <label class="task-title" for="_2">2</label>
+            <input class="radio-button" type="radio" id="_2" name="priority" {{checkedIfEqual '2' task.priority}} value="2" required>
+            <label class="task-title" for="_3">3</label>
+            <input class="radio-button" type="radio" id="_3" name="priority" {{checkedIfEqual '3' task.priority}} value="3" required>
+            <label class="task-title" for="_4">4</label>
+            <input class="radio-button" type="radio" id="_4" name="priority" {{checkedIfEqual '4' task.priority}} value="4" required>
+            <label class="task-title" for="_5">5</label>
+            <input class="radio-button" type="radio" id="_5" name="priority" {{checkedIfEqual '5' task.priority}} value="5"  required>
+        </div>
+    </div>
+
+    <div class="text-container">
+        <label class="task-title" for="due">Due:</label>
+        <input class="task-content-small" type="date" id="due" name="due" value="{{task.dueISO}}" required>
+    </div>
+
+    <div class="text-container">
+        <label class="task-title" for="done">Done</label>
+        <input class="radio-button" type="checkbox" id="done" name="done" {{checkedIfEqual 'true' task.done}}>
+    </div>
+
+    <button type="submit" class="theme-button" name="created" value="{{task.created}}">Speichern</button>
+</form>
+
+<form action="/" method="get">
+    <button class="theme-button" type="submit">Cancel</button>
+</form>

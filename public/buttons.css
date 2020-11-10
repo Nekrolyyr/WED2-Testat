@@ -68,7 +68,7 @@
   }
 }
 
-.theme-light .theme-button {
+.theme-light .theme-button-top-right {
   height: 38px;
   border-radius: 6px;
   background-color: #e0306f;
@@ -82,11 +82,11 @@
   top: 10px;
 }
 @media (hover) {
-  .theme-light .theme-button:hover:not(.active) {
+  .theme-light .theme-button-top-right:hover:not(.active) {
     opacity: 0.8;
   }
 }
-.theme-dark .theme-button {
+.theme-dark .theme-button-top-right {
   height: 38px;
   border-radius: 6px;
   background-color: #f5b4cd;
@@ -98,6 +98,41 @@
   position: absolute;
   right: 10px;
   top: 10px;
+}
+@media (hover) {
+  .theme-dark .theme-button-top-right:hover:not(.active) {
+    opacity: 0.8;
+  }
+}
+
+.theme-light .theme-button {
+  height: 38px;
+  width: 8em;
+  border-radius: 6px;
+  background-color: #e0306f;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  margin: 6px;
+  color: #f0f3ff;
+}
+@media (hover) {
+  .theme-light .theme-button:hover:not(.active) {
+    opacity: 0.8;
+  }
+}
+.theme-dark .theme-button {
+  height: 38px;
+  width: 8em;
+  border-radius: 6px;
+  background-color: #f5b4cd;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  font-family: "Ubuntu", "Arial", "Helvetica";
+  margin: 6px;
+  color: #30303f;
 }
 @media (hover) {
   .theme-dark .theme-button:hover:not(.active) {

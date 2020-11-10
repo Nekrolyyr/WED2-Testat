@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>ToDo Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <link rel="stylesheet" type="text/css" href="./buttons.css" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/buttons.css" />
   </head>
   <body class="{{#bool_check theme}}theme-dark{{else}}theme-light{{/bool_check}}">
   <div class="nav-bar">
       <h2>Notice Application</h2>
       <form action="/" method="get">
-        <button class="theme-button" value="{{#bool_check theme}}false{{else}}true{{/bool_check}}" name="theme" type="submit">Switch Theme</button>
+        <button class="theme-button-top-right" value={{toggle_boolean theme}} name="theme" type="submit">Switch Theme</button>
       </form>
   </div>
 {{{body}}}

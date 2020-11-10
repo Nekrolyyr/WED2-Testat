@@ -31,7 +31,7 @@
         }
     }
 }
-.theme-button{
+.theme-button-top-right{
     @include themeGen() {
         height: 38px;
         border-radius: 6px;
@@ -44,6 +44,25 @@
         position: absolute;
         right: 10px;
         top: 10px;
+        @media (hover) {
+            &:hover:not(.active) {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+.theme-button{
+    @include themeGen() {
+        height: 38px;
+        width: 8em;
+        border-radius: 6px;
+        background-color: getThemeVal('accent');
+        padding: 0 10px;
+        outline: none;
+        border: none;
+        font-family: $defaultFont;
+        margin: 6px;
+        color: getThemeVal('titanium');
         @media (hover) {
             &:hover:not(.active) {
                 opacity: 0.8;

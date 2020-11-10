@@ -7,7 +7,7 @@ export class TaskDatabase{
         this.store =
             store ||
             new Datastore({
-                filename: "./bdfiles/taskDatabase.db",
+                filename: "./dbfiles/taskDatabase.db",
                 autoload: true,
             });
     }
@@ -23,7 +23,7 @@ export class TaskDatabase{
             {
                 $set: {
                     title: task.title,
-                    description: task.content,
+                    content: task.content,
                     priority: task.priority,
                     due: task.due,
                     created :task.created,
@@ -33,20 +33,19 @@ export class TaskDatabase{
         );
         return await this.getTask(id);
     }
-    async getAllTasks(orderBy: string, orderDescending: boolean, hideDone: boolean) {
+    async getAllTasks(orderBy: string, orderDescending: string, hideDone: string) {
         let order;
-        const filter = hideDone ? {} : {done: false};
-        const directionNumber = orderDescending ? -1 : 1;
+        const filter = hideDone!=null && hideDone==="true" ? {} : {done: false};
         switch (orderBy) {
-            case "priority":
-                order = { priority: directionNumber };
-                break;
             case "created":
-                order = { created: directionNumber };
+                order = { created: orderDescending };
+                break;
+            case "priority":
+                order = { priority: orderDescending };
                 break;
             default:
             case "due":
-                order = { due: directionNumber };
+                order = { due: orderDescending };
                 break;
         }
         return this.store.find(filter).sort(order);

@@ -24,6 +24,20 @@ export const handlebarsEngine = handlebars.create({
             }else{
                 return "1";
             }
+        },
+        checkedIfEqual (val1: any, val2: any) {
+            if (val1.toString() === val2.toString()) {
+                return "checked";
+            } else {
+                return "";
+            }
+        },
+        toggle_boolean(b: string){
+            if(b == null || b === "true"){
+                return "false";
+            }else{
+                return "true";
+            }
         }
     },
 })

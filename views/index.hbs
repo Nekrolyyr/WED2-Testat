@@ -1,21 +1,21 @@
 <div  class="option-bar" >
-<form action="/" method="get">
+<form  class="option-bar" action="/" method="get">
     <label class="sort-button">
-        <input type="radio" value={{toggle_direction orderDescending}} id="due" name="orderDescending" onclick="submit()"/>
+        <input type="radio" value={{toggle_direction orderDescending}} id="due" name="orderDescending" {{checkedIfEqual orderBy "due"}} onclick="submit()"/>
         <input type="hidden" value="due" id="due" name="orderBy"/>
         <label for="due">Finish Date</label>
     </label>
 </form>
 <form class="option-bar" action="/" method="get">
     <label class="sort-button">
-        <input type="radio" value={{toggle_direction orderDescending}} id="created" name="orderDescending" onclick="submit()"/>
+        <input type="radio" value={{toggle_direction orderDescending}} id="created" name="orderDescending" {{checkedIfEqual orderBy "created"}} onclick="submit()"/>
         <input type="hidden" value="created" id="created" name="orderBy"/>
         <label for="created">Created Date</label>
     </label>
 </form>
 <form class="option-bar" action="/" method="get">
     <label class="sort-button">
-        <input type="radio" value={{toggle_direction orderDescending}} id="priority" name="orderDescending" onclick="submit()"/>
+        <input type="radio" value={{toggle_direction orderDescending}} id="priority" name="orderDescending" {{checkedIfEqual orderBy "priority"}} onclick="submit()"/>
         <input type="hidden" value="priority" id="priority" name="orderBy"/>
         <label for="priority">Importance</label>
     </label>
@@ -23,6 +23,7 @@
 </div>
 
 <ol>
+    {{#if tasks}}
     {{#each tasks}}
     <li>
         <div class="task-container">
@@ -38,20 +39,29 @@
                 </div>
                 <div class="due-date">Due: {{this.dueText}}</div>
                 <div class="end-block">
-                    <button class="edit-button">Edit</button>
+                    <form action="/task/{{this._id}}" method="get">
+                        <button type="submit" class="edit-button">Edit</button>
+                    </form>
                     <img style="visibility: {{#if this.done}} visible {{else}} hidden{{/if}}" class="check-image" src="images/tick.svg" alt="Done!" width="30" height="30">
                 </div>
             </div>
         </div>
     </li>
     {{/each}}
+    {{else}}
+        <p class="no-tasks">There are no Tasks Yet</p>
+    {{/if}}
 </ol>
-
-<button class="floating-action-button">Add Note</button>
+<form action="/task" method="get">
+    <button type="submit" class="floating-action-button">Add Note</button>
+</form>
 <div class="switch-holder">
     <a>Show done</a>
+    <form action="/" method="get">
     <label class="switch">
-        <input type="checkbox">
+        <input type="submit" name="hideDone" value={{toggle_boolean hideDone}}>
+        <input type="checkbox" {{checkedIfEqual hideDone "true"}}>
         <span class="slider round"></span>
     </label>
+    </form>
 </div>

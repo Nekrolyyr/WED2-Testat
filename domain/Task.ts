@@ -6,6 +6,7 @@ export default class Task {
     priority: number
     done: boolean
     dueText: string
+    dueISO: string
     constructor(title: string,
                 content: string,
                 created: Date,
@@ -18,6 +19,7 @@ export default class Task {
         this.due = due;
         this.priority = priority;
         this.done = done;
-        this.dueText = due.toDateString()
+        this.dueText = due?.toDateString()
+        this.dueISO = due?.toISOString().substring(0, 10)
     }
 }
